@@ -26,3 +26,10 @@ public:
             }
     }
 };
+
+// Factory Helpers
+std::unique_ptr<Entity> makePlayer(int x, int y);
+std::unique_ptr<Entity> makeWall(int x, int y);
+std::unique_ptr<Entity> makeCoin(int x, int y);
+std::unique_ptr<Entity> makePatrolEnemy(int x, int y);
+std::unique_ptr<Entity> makeChaserEnemy(int x, int y);
