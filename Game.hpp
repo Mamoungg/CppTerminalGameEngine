@@ -27,6 +27,8 @@ public:
 
     Player* getPlayer() const { return player; }
 
+    char lastKey = 0;
+
 private:
     void restart();
     void loadLevel();

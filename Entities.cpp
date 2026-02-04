@@ -25,13 +25,14 @@ public:
 
     void update(Game& game) override {
         char c = readKey();
+        game.lastKey = c;
 
         int dx = 0, dy = 0;
 
         if (c == 'q' || c == 'Q') std::exit(0);
 
-        if (c == 'w' || c == 'W') dy = 1;
-        if (c == 's' || c == 'S') dy = -1;
+        if (c == 'w' || c == 'W') dy = -1;
+        if (c == 's' || c == 'S') dy = 1;
         if (c == 'a' || c == 'A') dx = -1;
         if (c == 'd' || c == 'D') dx = 1;
 
@@ -90,7 +91,7 @@ public:
         if (!p) return;
 
         int dx = p->pos.x - pos.x;
-        int dy = p->pos.y = pos.y;
+        int dy = p->pos.y - pos.y;
 
         // Only chase if within range
         const int range = 8;
