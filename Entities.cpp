@@ -24,7 +24,7 @@ public:
     Player(int x, int y) : Entity(x, y, 'P', "Player") {}
 
     void update(Game& game) override {
-        char c = readkey();
+        char c = readKey();
         int dx = 0, dy = 0;
 
         if (c == 'q') std::exit(0);
