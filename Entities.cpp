@@ -28,11 +28,12 @@ public:
 
         int dx = 0, dy = 0;
 
-        if (c == 'q') std::exit(0);
-        if (c == 'w') dy = -1;
-        if (c == 's') dy = 1;
-        if (c == 'a') dx = -1;
-        if (c == 'd') dx = 1;
+        if (c == 'q' || c == 'Q') std::exit(0);
+
+        if (c == 'w' || c == 'W') dy = 1;
+        if (c == 's' || c == 'S') dy = -1;
+        if (c == 'a' || c == 'A') dx = -1;
+        if (c == 'd' || c == 'D') dx = 1;
 
         if (dx == 0 && dy == 0) return;
 
