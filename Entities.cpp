@@ -25,6 +25,7 @@ public:
 
     void update(Game& game) override {
         char c = readKey();
+
         int dx = 0, dy = 0;
 
         if (c == 'q') std::exit(0);
