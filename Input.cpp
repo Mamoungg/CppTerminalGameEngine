@@ -3,30 +3,36 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <cstdio>
+#include <cstdlib>
 
-int kbhit() {
-    termios oldt{}, newt{};
-    tcgetattr(STDIN_FILENO, &oldt);
-    newt = oldt;
-    newt.c_lflag &= ~(ICANON | ECHO);
-    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+static termios g_oldTerm{};
+static bool g_inited = false;
 
-    int oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
-    fcntl(STDERR_FILENO, F_SETFL, oldf | O_NONBLOCK);
+static void restoreTerminal() {
+    tcsetattr(STDIN_FILENO, TCSANOW, &g_oldTerm);
+}
 
-    int ch = getchar();
+static void initTerminalOnce() {
+    if (g_inited) return;
+    g_inited = true;
 
-    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-    fcntl(STDIN_FILENO, F_SETFL, oldf);
+    tcgetattr(STDIN_FILENO, &g_oldTerm);
 
-    if (ch != EOF) {
-        ungetc(ch, stdin);
-        return -1;
-    }
-    return 0;
+    termios raw = g_oldTerm;
+    raw.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &raw);
+
+    int flags = fcntl(STDIN_FILENO, F_GETFL, 0);
+    fcntl(STDIN_FILENO, F_SETFL, flags | O_NONBLOCK);
+
+    std::atexit(restoreTerminal);
 }
 
 char readKey() {
-    if (!kbhit()) return 0;
-    return static_cast<char>(getchar());
+    initTerminalOnce();
+
+    char c = 0;
+    ssize_t n = ::read(STDIN_FILENO, &c, 1);
+    if (n == 1) return c;
+    return 0;
 }

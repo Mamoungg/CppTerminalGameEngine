@@ -107,8 +107,7 @@ void Game::run() {
 
 void Game::update() {
     if (win || gameOver) {
-        if (kbhit()) {
-            (void)getchar();
+        if (readKey() != 0) {
             restart();
         }
         return;
