@@ -23,6 +23,10 @@ void Game::collectCoin() {
     if (coinsLeft == 0) win = true;
 }
 
+bool Game::isInside(const Vector2& p) const {
+    return p.x >= 0 && p.x < width && p.y >= 0 && p.y < height;
+}
+
 bool Game::isWallAt(const Vector2& p) const {
     for (const auto& e : entities) {
         if (e->active && e->tag == "Wall" && e->pos == p) return true;
