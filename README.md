@@ -32,16 +32,6 @@ The goal of the project is **educational**: to understand how game engines work 
     * Solid collisions (walls block movement)
     * Trigger collisions (coins, enemies)
 
-## 🕹️ Controls
-
-| Key | Action |
-| --- | --- |
-| **W** | Move Up |
-| **A** | Move Left |
-| **S** | Move Down |
-| **D** | Move Right |
-| **Q** | **Quit Game** |
-
 ## 🧠 Architecture Overview
 
 The codebase follows a **modular objed-oriented design:**
@@ -89,6 +79,17 @@ g++ -std=c++17 -O2 -Wall -Wextra main.cpp Game.cpp Entities.cpp Input.cpp -o gam
 ```bash
 ./game
 ```
+
+## 🕹️ Controls
+
+| Key | Action |
+| --- | --- |
+| **W** | Move Up |
+| **A** | Move Left |
+| **S** | Move Down |
+| **D** | Move Right |
+| **Q** | **Quit Game** |
+
 ## 🚀 Future Improvements
 * Multiple levels
 * Player health system
