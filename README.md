@@ -48,3 +48,44 @@ The codebase follows a **modular objed-oriented design:**
 
 ### 🧩 Game
 * Owns the main game loop
+* Stores all active entities
+* Manages game state (win/loss/reset)
+* Handles rendering and timing
+
+### 🧱 Entity (Abstract base class)
+* Defines the interface for all game objects
+* Enforces `update()` and `render()` behavior
+
+### 🧍🏻‍♂️ Player
+* Handles keyboard input
+* Performs collision checks before movement
+* Triggers win/loss conditions
+
+### 👾 Enemy
+* Implements simple AI behavior
+* Moves independently of player input
+* Causes game over on collision
+
+### 🎨 Rendering System
+* Builds the frame in memory before printing
+* Avoids direct terminal writes per entity
+* Mimics a basic graphics pipeline
+
+## 🛠️ Build & Run
+
+### Requirements
+* **OS:** macOS or Linux (Uses POSIX libraries for terminal control)
+* **Compiler:** GCC(`g++`) or Clang
+* **Dependencies:** None! (Standard C++ libraries only)
+
+### Compile
+1. **Open your terminal** and navigate to the projects folder
+2. **Compile the code** using `g++`:
+```bash
+g++ -std=c++17 -O2 -Wall -Wextra \ main.cpp Game.cpp Entities.cpp Input.cpp \ -o game
+```
+
+### Run
+```bash
+./game
+```
