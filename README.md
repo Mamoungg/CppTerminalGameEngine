@@ -82,10 +82,28 @@ The codebase follows a **modular objed-oriented design:**
 1. **Open your terminal** and navigate to the projects folder
 2. **Compile the code** using `g++`:
 ```bash
-g++ -std=c++17 -O2 -Wall -Wextra \ main.cpp Game.cpp Entities.cpp Input.cpp \ -o game
+g++ -std=c++17 -O2 -Wall -Wextra main.cpp Game.cpp Entities.cpp Input.cpp -o game
 ```
 
 ### Run
 ```bash
 ./game
 ```
+## 🚀 Future Improvements
+* Multiple levels
+* Player health system
+* Smarter enemy pathfinding (BFS/A*)
+* Combat mechanics or projectiles
+* Save/load support
+* Windows compatibility
+
+## 📚 Learning Outcomes
+This project was built to practice and demonstate:
+* Game loop architecture
+* Entity-based design
+* Collisions detection techniques
+* Low-level input handling
+* Multi-file C++ project organization
+
+## 📝 License
+This project is intended for **educational use**. Feel free to modify, extend, and experiment with the code.
