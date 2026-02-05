@@ -11,7 +11,7 @@ The goal of the project is **educational**: to understand how game engines work 
 
 ## ✨ Features
 
-### 🕹️ Real-Time Game Loop
+### 🔂 Real-Time Game Loop
 * Fixed timestep loop (~10 FPS)
 * Clear seperation between **Update** and **Render** phases
 * Consistent behavior regardless of input timing
@@ -24,3 +24,27 @@ The goal of the project is **educational**: to understand how game engines work 
     * `Enemy`
     * `Wall`
     * `Coin`
+
+### 🧱 Collision Detection
+* **Grid-based AABB collision**
+* Position-based checks using integer coordinates
+* Supports:
+    * Solid collisions (walls block movement)
+    * Trigger collisions (coins, enemies)
+
+## 🕹️ Controls
+
+| Key | Action |
+| --- | --- |
+| **W** | Move Up |
+| **A** | Move Left |
+| **S** | Move Down |
+| **D** | Move Right |
+| **Q** | **Quit Game** |
+
+## 🧠 Architecture Overview
+
+The codebase follows a **modular objed-oriented design:**
+
+### 🧩 Game
+* Owns the main game loop
